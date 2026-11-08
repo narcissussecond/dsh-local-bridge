@@ -1,0 +1,29 @@
+# ---- runtime state: never publish ----
+# Machine-specific configuration (may contain the operator's absolute paths).
+config.json
+
+# Logs. bridge-stdout.log holds every request line the bridge has served.
+*.log
+
+# Daily self-check + watchdog output.
+reports/
+
+# Archived request bodies from failed upstream calls. These CONTAIN FULL CONVERSATIONS
+# (system prompts, tool results, user turns) and can be megabytes each.
+failed-body-*.json
+
+# State written by the tooling itself.
+.last-task-state.json
+.watchdog-state.json
+
+# Vendored extraction of the `yaml` package, used only to validate the DSH profile on
+# the author's machine. It is third-party code and does not belong here: install `yaml`
+# yourself if you need it (see README, "校验 profile").
+_yamlpkg/
+
+# ---- tooling ----
+node_modules/
+
+# ---- OS noise ----
+Thumbs.db
+desktop.ini

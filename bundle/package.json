@@ -1,0 +1,22 @@
+{
+  "name": "@local/dsh-local-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Configuration-only DSH plugin bundle that registers the local WorkBuddy OpenAI-compatible bridge as an llm-pi-ai provider.",
+  "exports": {
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" }
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "本地 WorkBuddy 桥接",
+    "description": "把本机的 WorkBuddy OpenAI 兼容桥接服务注册为 DSH 的模型 provider（llm-pi-ai）。桥接进程需单独运行，本插件只负责写入配置。"
+  }
+}

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Local bridge">
+  <!-- Original artwork for dsh-local-bridge: two endpoints joined by a local loop. -->
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="#0f172a"/>
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="none" stroke="#334155" stroke-width="1.5"/>
+  <!-- left endpoint: the WorkBuddy desktop app -->
+  <rect x="9" y="24" width="15" height="16" rx="3" fill="#247bbf"/>
+  <rect x="11.5" y="26.5" width="10" height="2.2" rx="1" fill="#dbeafe"/>
+  <rect x="11.5" y="30.5" width="7" height="2.2" rx="1" fill="#dbeafe"/>
+  <rect x="11.5" y="34.5" width="8.5" height="2.2" rx="1" fill="#dbeafe"/>
+  <!-- right endpoint: DSH -->
+  <rect x="40" y="24" width="15" height="16" rx="3" fill="#4D6BFE"/>
+  <path d="M43 28.5h9M43 32h9M43 35.5h6" stroke="#e0e7ff" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- the local loop between them: localhost only -->
+  <path d="M24 32h16" stroke="#38bdf8" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M28 27c0-4 8-4 8 0M28 37c0 4 8 4 8 0" fill="none" stroke="#22d3ee" stroke-width="2" stroke-linecap="round" opacity="0.85"/>
+  <circle cx="32" cy="32" r="2.6" fill="#f8fafc"/>
+  <!-- small "127" loopback marker -->
+  <text x="32" y="53" text-anchor="middle" font-family="ui-monospace, monospace" font-size="8" fill="#64748b">127.0.0.1</text>
+</svg>

@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Local WorkBuddy bridge",
+    "description": "Registers a local WorkBuddy OpenAI-compatible bridge as a DSH model provider (llm-pi-ai). Run the bridge service separately; this bundle only wires its configuration."
+  }
+}

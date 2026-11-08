@@ -1,0 +1,23 @@
+# Fill in what differs on your machine, then copy to config.json.
+# config.json is git-ignored; this example file is what gets published.
+#
+# Every value below has a working default, so config.json is optional:
+# omit it and the bridge derives DSH_HOME from ~/.dsh and runs on port 8791.
+{
+  "_comment": "All keys are optional. Delete the ones you do not need.",
+
+  "_profileConfig": "Path to the DSH profile patch file that points at this bridge. Default: <DSH_HOME>/profiles/<profile>/cordis.patch.yml",
+  "profileConfig": null,
+
+  "_profile": "Which DSH profile the bridge is configured in. Default: desktop",
+  "profile": "desktop",
+
+  "_node": "Absolute path to node.exe, only if `node` is not on PATH. Default: the interpreter running the scripts",
+  "node": null,
+
+  "_reportsDir": "Where daily-check writes its reports. Default: <bridge dir>/reports",
+  "reportsDir": null,
+
+  "_logPath": "Where the bridge appends its stdout log. Default: <bridge dir>/bridge-stdout.log",
+  "logPath": null
+}

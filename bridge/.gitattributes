@@ -1,0 +1,12 @@
+# .cmd / .bat MUST keep CRLF: cmd.exe parses a lone LF badly and mangles REM lines
+# ("'M' is not recognized as an internal or external command"). This was a real bug here.
+*.cmd   text eol=crlf
+*.bat   text eol=crlf
+*.ps1   text eol=crlf
+*.xml   text eol=crlf
+
+# Everything else stays LF.
+*.mjs   text eol=lf
+*.js    text eol=lf
+*.json  text eol=lf
+*.md    text eol=lf

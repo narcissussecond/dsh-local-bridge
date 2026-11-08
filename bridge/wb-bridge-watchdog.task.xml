@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-16"?>
+<!--
+  TEMPLATE — do not register this file directly.
+
+  Run install-tasks.ps1, which substitutes the placeholders with this machine's values
+  and registers the task:
+
+    {{USER_SID}}        the signed-in user's SID (who the task runs as)
+    {{BRIDGE_DIR}}      where this bridge lives on disk
+    {{START_BOUNDARY}}  first run time
+
+  Every 5 minutes. A degraded bridge shows up as "unknown model provider" in DSH long
+  before anyone thinks to look at a daily report, so this runs far more often than the
+  daily check and stays silent unless it had to act.
+-->
+<Task version="1.3" xmlns="http://schemas.microsoft.com/windows/2004/02/mit/task">
+  <RegistrationInfo>
+    <Description>WB to DSH bridge watchdog: probes the bridge every 5 minutes and restarts it when it is not listening. Silent unless it acts.</Description>
+    <URI>\wb-bridge-watchdog</URI>
+  </RegistrationInfo>
+  <Principals>
+    <Principal id="Author">
+      <UserId>{{USER_SID}}</UserId>
+      <LogonType>InteractiveToken</LogonType>
+    </Principal>
+  </Principals>
+  <Settings>
+    <DisallowStartIfOnBatteries>false</DisallowStartIfOnBatteries>
+    <StopIfGoingOnBatteries>false</StopIfGoingOnBatteries>
+    <ExecutionTimeLimit>PT10M</ExecutionTimeLimit>
+    <MultipleInstancesPolicy>IgnoreNew</MultipleInstancesPolicy>
+    <StartWhenAvailable>true</StartWhenAvailable>
+    <UseUnifiedSchedulingEngine>true</UseUnifiedSchedulingEngine>
+    <WakeToRun>false</WakeToRun>
+  </Settings>
+  <Triggers>
+    <CalendarTrigger>
+      <StartBoundary>{{START_BOUNDARY}}</StartBoundary>
+      <Enabled>true</Enabled>
+      <Repetition>
+        <Interval>PT5M</Interval>
+        <StopAtDurationEnd>false</StopAtDurationEnd>
+      </Repetition>
+      <ScheduleByDay>
+        <DaysInterval>1</DaysInterval>
+      </ScheduleByDay>
+    </CalendarTrigger>
+  </Triggers>
+  <!--
+    Launched through run-silent.vbs, NOT directly as a .cmd.
+
+    Task Scheduler runs an InteractiveToken task on the user's desktop, so a console
+    program (.cmd/.bat/cmd.exe/powershell.exe) gets a real console window that appears
+    on screen and steals focus. For a task that fires every 5 minutes that is a window
+    popping up every 5 minutes over whatever the user is doing.
+
+    wscript.exe //nologo //B run-silent.vbs <cmd> creates the console hidden (window
+    style 0) and propagates the exit code, so this task still reports failure normally
+    but never shows a window.
+  -->
+  <Actions Context="Author">
+    <Exec>
+      <Command>wscript.exe</Command>
+      <Arguments>//nologo //B "{{BRIDGE_DIR}}\run-silent.vbs" "{{BRIDGE_DIR}}\watchdog.cmd"</Arguments>
+    </Exec>
+  </Actions>
+</Task>

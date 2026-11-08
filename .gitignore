@@ -1,0 +1,20 @@
+# Local, per-machine state that must never be published.
+# The bridge/ subfolder has its own .gitignore for its runtime artifacts.
+
+# DSH profile / local config with machine-specific paths
+config.json
+bundle/config.json
+
+# OS / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+*.swp
+.vscode/
+.idea/
+
+# If someone accidentally runs the bridge at the repo root
+*.log
+reports/
+failed-body-*.json
+node_modules/
